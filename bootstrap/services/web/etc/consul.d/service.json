@@ -1,0 +1,16 @@
+{
+    "service": {
+        "name": "web",
+        "tags": [
+            "nginx"
+        ],
+        "port": 80,
+        "check": {
+            "args": [
+                "curl",
+                "0.0.0.0"
+            ],
+            "interval": "10s"
+        }
+    }
+}
