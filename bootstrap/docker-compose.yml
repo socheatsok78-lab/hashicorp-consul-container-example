@@ -39,12 +39,6 @@ services:
     networks:
       - consul-demo
 
-  app-frontend-2:
-    <<: *frontend
-
-  app-frontend-3:
-    <<: *frontend
-
   nginx-load-balancer:
     build: services/nginx-load-balancer
     environment:

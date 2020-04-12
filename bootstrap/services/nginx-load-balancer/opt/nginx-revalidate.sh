@@ -12,7 +12,4 @@ nginx \
     -c /etc/nginx/nginx.conf
 
 echo "======> Reloading nginx configurations..."
-
-nginx \
-    -s reload \
-    -c /etc/nginx/nginx.conf
+service nginx reload

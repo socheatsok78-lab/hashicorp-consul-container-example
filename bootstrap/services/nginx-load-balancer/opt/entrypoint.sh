@@ -3,7 +3,7 @@
 set -e
 
 echo "======> Starting nginx..."
-nginx -c /etc/nginx/nginx.conf &
+service nginx start
 
 echo "======> Starting Consul agent..."
 consul agent \

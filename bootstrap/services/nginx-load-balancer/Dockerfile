@@ -21,9 +21,12 @@ RUN curl -o consul_template_linux_amd64.zip $CONSUL_TEMPLATE_DOWNLOAD_URL && \
     mv consul-template /usr/bin/consul-template && \
     chmod +x /usr/bin/consul-template
 
-FROM nginx:stable-alpine
+FROM debian:stable
 
-RUN apk add curl
+RUN apt-get update && \
+    apt-get install -y \
+    curl \
+    nginx
 
 COPY --from=consul-bootstrap /usr/bin/consul* /usr/bin/
 RUN chmod +x /usr/bin/consul*
