@@ -36,5 +36,7 @@ COPY ./etc/consul.d/ /etc/consul.d/
 COPY ./opt /opt
 RUN chmod +x /opt/*.sh
 
+STOPSIGNAL SIGTERM
+
 EXPOSE 80 443
 ENTRYPOINT [ "/opt/entrypoint.sh" ]

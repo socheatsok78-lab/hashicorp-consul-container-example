@@ -5,9 +5,9 @@ if [ -f "/etc/nginx/conf.d/default.conf" ]; then
 fi
 
 echo "======> Validating nginx configurations..."
-nginx \
-    -t \
-    -c /etc/nginx/nginx.conf
+nginx -t -c /etc/nginx/nginx.conf
 
 echo "======> Reloading nginx configurations..."
 service nginx reload
+
+exit 0

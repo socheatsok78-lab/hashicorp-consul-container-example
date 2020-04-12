@@ -2,6 +2,15 @@
 
 set -e
 
+# Define cleanup procedure
+cleanup() {
+    echo "Container stopped, leaving service cluster..."
+    consul leave -http-addr ${CONSUL_HTTP_ADDR}
+}
+
+# Trap SIGTERM
+trap 'cleanup' SIGTERM SIGKILL
+
 echo "======> Starting Consul agent..."
 consul agent \
     -retry-join ${CONSUL_HTTP_ADDR} \

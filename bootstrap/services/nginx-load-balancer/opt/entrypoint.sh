@@ -2,6 +2,15 @@
 
 set -e
 
+# Define cleanup procedure
+cleanup() {
+    echo "Container stopped, leaving service cluster..."
+    consul leave -http-addr ${CONSUL_HTTP_ADDR}
+}
+
+# Trap SIGTERM
+trap 'cleanup' TERM KILL
+
 echo "======> Starting nginx..."
 service nginx start
 
