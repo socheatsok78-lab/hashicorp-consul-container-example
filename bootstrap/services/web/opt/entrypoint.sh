@@ -1,6 +1,8 @@
 #!/usr/bin/env sh
 
-echo "Starting Consul agent..."
+set -e
+
+echo "======> Starting Consul agent..."
 consul agent \
     -retry-join ${CONSUL_HTTP_ADDR} \
     -client 0.0.0.0 \

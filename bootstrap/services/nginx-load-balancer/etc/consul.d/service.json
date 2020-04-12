@@ -1,9 +1,9 @@
 {
     "service": {
-        "name": "web",
+        "name": "load-balancer",
         "tags": [
             "nginx",
-            "web"
+            "load-balancer"
         ],
         "port": 80,
         "check": {

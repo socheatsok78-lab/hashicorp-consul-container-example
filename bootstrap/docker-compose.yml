@@ -30,19 +30,7 @@ services:
       - "8600:8600/udp"
     command: "agent -server -bootstrap-expect 3 -ui -client 0.0.0.0"
 
-  nginx-load-balancer:
-    image: nginx:stable-alpine
-    links:
-      - consul-server-bootstrap
-    depends_on:
-      - consul-server-bootstrap
-    ports:
-      - "9090:80"
-    networks:
-      - web
-      - consul-demo
-
-  app-frontend-1: &frontend
+  app-frontend: &frontend
     build: services/web
     depends_on:
       - consul-server-bootstrap
@@ -53,6 +41,20 @@ services:
 
   app-frontend-2:
     <<: *frontend
+
+  app-frontend-3:
+    <<: *frontend
+
+  nginx-load-balancer:
+    build: services/nginx-load-balancer
+    environment:
+      CONSUL_HTTP_ADDR: consul-server-bootstrap
+    depends_on:
+      - consul-server-bootstrap
+    ports:
+      - "9090:80"
+    networks:
+      - consul-demo
 
 networks:
   web:

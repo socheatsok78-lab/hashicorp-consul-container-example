@@ -22,8 +22,10 @@ RUN chmod +x /usr/bin/consul
 
 COPY ./etc/consul.d/service.json /etc/consul.d/service.json
 
-COPY entrypoint.sh .
-RUN chmod +x entrypoint.sh
+COPY ./html/index.html /usr/share/nginx/html
+
+COPY ./opt/entrypoint.sh /opt/entrypoint.sh
+RUN chmod +x /opt/entrypoint.sh
 
 EXPOSE 80 443
-ENTRYPOINT [ "./entrypoint.sh" ]
+ENTRYPOINT [ "/opt/entrypoint.sh" ]
