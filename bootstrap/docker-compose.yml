@@ -51,5 +51,4 @@ services:
       - consul-demo
 
 networks:
-  web:
   consul-demo:
