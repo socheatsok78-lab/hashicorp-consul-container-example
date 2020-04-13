@@ -2,6 +2,11 @@
 
 A working example for service discovery with nginx load-balancing.
 
+## Services Endpoint
+
+- Consul dashboard: http://localhost:8500
+- Example web app: http://localhost:9090
+
 ## Usage
 
 #### Starting the cluster:
