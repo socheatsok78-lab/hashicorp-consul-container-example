@@ -12,29 +12,29 @@ A working example for service discovery with nginx load-balancing.
 #### Starting the cluster:
 
 ```sh
-./service.sh start
+./service start
 ```
 
 #### Scalling the cluster:
 
 ```sh
-./service.sh scale web=10
+./service scale web=10
 ```
 
 
 #### Stopping the cluster:
 
 ```sh
-./service.sh stop
+./service stop
 ```
 
 #### Check the process of the cluster:
 
 ```sh
-./service.sh ps
+./service ps
 ```
 
 #### Ouput the cluster logs:
 
 ```sh
-./service.sh logs
+./service logs
