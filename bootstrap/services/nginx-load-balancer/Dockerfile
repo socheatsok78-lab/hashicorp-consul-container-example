@@ -1,5 +1,10 @@
 FROM debian:stable
 
+# Add Tini
+ENV TINI_VERSION v0.18.0
+ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
+RUN chmod +x /tini
+
 RUN apt-get update && \
     apt-get install -y \
     curl \
@@ -14,7 +19,5 @@ COPY ./etc/consul.d/ /etc/consul.d/
 COPY ./opt /opt
 RUN chmod +x /opt/*.sh
 
-STOPSIGNAL SIGTERM
-
 EXPOSE 80 443
-ENTRYPOINT [ "/opt/entrypoint.sh" ]
+ENTRYPOINT [ "/tini", "-v", "--", "/opt/entrypoint.sh" ]

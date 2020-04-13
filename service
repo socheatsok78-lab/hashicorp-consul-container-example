@@ -13,19 +13,19 @@ bootstrap () {
 
 start () {
     echo "Starting services...."
-    bootstrap up --detach
+    bootstrap up --detach $@
 }
 
 stop () {
-    bootstrap down
+    bootstrap down $@
 }
 
 ps () {
-    bootstrap ps
+    bootstrap ps $@
 }
 
 logs () {
-    bootstrap logs
+    bootstrap logs $@
 }
 
 scale () {

@@ -1,6 +1,8 @@
 FROM nginx:stable-alpine
 
-RUN apk update && apk add curl
+RUN apk add --no-cache \
+    tini \
+    curl
 
 COPY --from=consul:latest /bin/consul /bin/consul
 RUN chmod +x /bin/consul
@@ -13,4 +15,4 @@ COPY ./opt/entrypoint.sh /opt/entrypoint.sh
 RUN chmod +x /opt/entrypoint.sh
 
 EXPOSE 80 443
-ENTRYPOINT [ "/opt/entrypoint.sh" ]
+ENTRYPOINT [ "/sbin/tini", "-v", "--", "/opt/entrypoint.sh" ]
