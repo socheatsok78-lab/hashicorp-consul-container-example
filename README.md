@@ -2,6 +2,8 @@
 
 A working example for service discovery with nginx load-balancing.
 
+![output.fig](output.gif)
+
 ## Services Endpoint
 
 - Consul dashboard: http://localhost:8500
