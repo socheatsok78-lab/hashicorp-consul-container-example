@@ -49,6 +49,22 @@ services:
       CONSUL_HTTP_ADDR: consul-server-bootstrap
     networks:
       - consul-network
+  service-a:
+    build: services/service-a
+    depends_on:
+      - consul-server-bootstrap
+    environment:
+      CONSUL_HTTP_ADDR: consul-server-bootstrap
+    networks:
+      - consul-network
+  service-b:
+    build: services/service-b
+    depends_on:
+      - consul-server-bootstrap
+    environment:
+      CONSUL_HTTP_ADDR: consul-server-bootstrap
+    networks:
+      - consul-network
 
 networks:
   consul-network:
