@@ -2,15 +2,6 @@
 
 set -e
 
-# Define cleanup procedure
-cleanup() {
-    echo "======> Container stopped, leaving service cluster..."
-    consul leave
-}
-
-# Trap SIGTERM
-trap 'cleanup' INT TERM
-
 echo "======> Starting nginx..."
 service nginx start
 
